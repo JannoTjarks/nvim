@@ -114,8 +114,7 @@ return {
                     desc = "Selects a code action available at the current cursor position [LSP]",
                 })
                 map("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", {
-                    desc =
-                    "Lists all the references to the symbol under the cursor in the quickfix window [LSP]",
+                    desc = "Lists all the references to the symbol under the cursor in the quickfix window [LSP]",
                 })
                 map(
                     "n",
@@ -191,7 +190,13 @@ return {
                         usePlaceholders = true,
                         completeUnimported = true,
                         staticcheck = true,
-                        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+                        directoryFilters = {
+                            "-.git",
+                            "-.vscode",
+                            "-.idea",
+                            "-.vscode-test",
+                            "-node_modules",
+                        },
                         semanticTokens = true,
                     },
                 },
@@ -290,28 +295,18 @@ return {
                         validate = true,
                         completion = true,
                         schemas = {
-                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
-                            "/.azurepipelines/*",
-                            ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] =
-                            "*api*.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] =
-                            "roles/**.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] =
-                            "playbooks/**.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] =
-                            "*host*.{yml,yaml}",
-                            ["https://json.schemastore.org/github-workflow.json"] =
-                            ".github/workflows/*",
-                            ["https://json.schemastore.org/github-action.json"] =
-                            ".github/actions/*.{yml,yaml}",
-                            ["https://json.schemastore.org/dependabot-2.0.json"] =
-                            ".github/dependabot.{yml,yaml}",
-                            ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] =
-                            "*gitlab-ci*.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "/.azurepipelines/*",
+                            ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] = "roles/**.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] = "playbooks/**.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] = "*host*.{yml,yaml}",
+                            ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+                            ["https://json.schemastore.org/github-action.json"] = ".github/actions/*.{yml,yaml}",
+                            ["https://json.schemastore.org/dependabot-2.0.json"] = ".github/dependabot.{yml,yaml}",
+                            ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
                             kubernetes = "@(deploy|.k8s)/**/*.{yml,yaml}",
                             -- kubernetes = "deploy/**/*.{yml,yaml}",
-                            ["https://json.schemastore.org/kustomization.json"] =
-                            "kustomization.{yml,yaml}",
+                            ["https://json.schemastore.org/kustomization.json"] = "kustomization.{yml,yaml}",
                             ["https://json.schemastore.org/chart.json"] = "Chart.{yml,yaml}",
                         },
                     },

@@ -36,8 +36,8 @@ return {
                     "branch",
                     "diff",
                     {
-                        "diagnostics",
                         sources = {
+                            "diagnostics",
                             "nvim_diagnostic",
                         },
                         symbols = {
