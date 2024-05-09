@@ -319,4 +319,12 @@ return {
             })
         end,
     },
+    {
+        "JannoTjarks/tflint.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+        },
+        opts = {},
+    },
 }
