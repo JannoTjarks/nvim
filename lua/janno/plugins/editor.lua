@@ -158,4 +158,50 @@ return {
             })
         end,
     },
+    {
+        "christoomey/vim-tmux-navigator",
+        config = function()
+            local iron = require("iron.core")
+            iron.setup({
+                config = {
+                    scratch_repl = true,
+                    repl_definition = {
+                        sh = {
+                            command = { "bash" },
+                        },
+                        bash = {
+                            command = { "bash" },
+                        },
+                        ps1 = {
+                            command = { "pwsh" },
+                        },
+                        py = {
+                            command = { "python3" },
+                        },
+                        lua = {
+                            command = { "luajit" },
+                        },
+                    },
+                    repl_open_cmd = "botright 20 split",
+                },
+            })
+
+            local map = require("janno.utils").map
+            map("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>", {
+                desc = "Navigate to the next pane left",
+            })
+            map("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>", {
+                desc = "Navigate to the next pane down",
+            })
+            map("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>", {
+                desc = "Navigate to the next pane above",
+            })
+            map("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>", {
+                desc = "Navigate to the next pane rigth",
+            })
+            map("n", "<c-\\>", "<cmd>TmuxNavigatePrevious<cr>", {
+                desc = "Navigate to the previous pane",
+            })
+        end,
+    },
 }
