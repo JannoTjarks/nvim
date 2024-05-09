@@ -5,6 +5,9 @@ return {
     config = function()
         require("catppuccin").setup({
             transparent_background = true,
+            no_italic = true,
+            no_bold = true,
+            no_underline = true,
             integrations = {
                 cmp = true,
                 gitsigns = true,
@@ -15,18 +18,6 @@ return {
                 markdown = true,
                 native_lsp = {
                     enabled = true,
-                    virtual_text = {
-                        errors = { "italic" },
-                        hints = { "italic" },
-                        warnings = { "italic" },
-                        information = { "italic" },
-                    },
-                    underlines = {
-                        errors = { "underline" },
-                        hints = { "underline" },
-                        warnings = { "underline" },
-                        information = { "underline" },
-                    },
                     inlay_hints = {
                         background = true,
                     },
