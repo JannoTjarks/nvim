@@ -51,9 +51,9 @@ return {
                 end
 
                 -- inlay-hints
-                -- if client.server_capabilities.inlayHintProvider then
-                --     vim.lsp.inlay_hint.enable(bufnr, true)
-                -- end
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(bufnr, true)
+                end
 
                 local map = require("janno.utils").map
                 map(
