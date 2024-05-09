@@ -21,3 +21,6 @@ map("n", "<A-c>", "<cmd>bdelete<CR>")
 
 -- Clear highlight search after pressing ESC in normal mode
 map("n", "<ESC>", "<cmd>nohlsearch<CR>")
+
+-- Easier mode change with pressing ESC from inside terminal mode to normal mode
+map("t", "<ESC>", "<C-\\><C-n>")

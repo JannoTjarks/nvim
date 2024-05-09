@@ -16,7 +16,7 @@ vim.opt.ruler = true
 vim.opt.number = true
 vim.opt.autoread = true
 vim.opt.fileformat = "unix"
-vim.opt.clipboard:prepend("unnamedplus")
+vim.opt.clipboard:prepend("unnamed")
 
 -- Search
 vim.opt.incsearch = true
