@@ -8,4 +8,6 @@ utils.map = function(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+utils.masonpath = vim.fn.stdpath("data") .. "/mason"
+
 return utils

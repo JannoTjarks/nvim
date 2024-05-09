@@ -224,13 +224,16 @@ return {
             })
 
             lsp.omnisharp.setup({
-                cmd = { "dotnet", "/home/janno/.local/bin/omnisharp/OmniSharp.dll" },
+                cmd = {
+                    require("janno.utils").masonpath .. "/bin/omnisharp",
+                },
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
 
             lsp.powershell_es.setup({
-                bundle_path = "/home/janno/.local/bin/powershell-editor-services",
+                bundle_path = require("janno.utils").masonpath
+                    .. "/packages/powershell-editor-services",
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
