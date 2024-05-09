@@ -5,8 +5,30 @@ return {
         dependencies = {
             { "nvim-lua/plenary.nvim" },
             { "BurntSushi/ripgrep" },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            { "JannoTjarks/telescope-terraform-doc.nvim" },
         },
         config = function()
+            require("telescope").setup({
+                extensions = {
+                    fzf = {
+                        fuzzy = true,
+                        override_generic_sorter = true,
+                        override_file_sorter = true,
+                        case_mode = "smart_case",
+                    },
+                    terraform_doc = {
+                        url_open_command = "xdg-open",
+                        latest_provider_symbol = "  ",
+                        wincmd = "new",
+                        wrap = "nowrap",
+                    },
+                },
+            })
+
+            require("telescope").load_extension("fzf")
+            require("telescope").load_extension("terraform_doc")
+
             local map = require("janno.utils").map
             local builtin = require("telescope.builtin")
 
