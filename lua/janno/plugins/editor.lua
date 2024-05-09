@@ -112,4 +112,50 @@ return {
         lazy = false,
         opts = {},
     },
+    {
+        "Vigemus/iron.nvim",
+        config = function()
+            local iron = require("iron.core")
+            iron.setup({
+                config = {
+                    scratch_repl = true,
+                    repl_definition = {
+                        sh = {
+                            command = { "bash" },
+                        },
+                        bash = {
+                            command = { "bash" },
+                        },
+                        ps1 = {
+                            command = { "pwsh" },
+                        },
+                        py = {
+                            command = { "python3" },
+                        },
+                        lua = {
+                            command = { "luajit" },
+                        },
+                    },
+                    repl_open_cmd = "botright 20 split",
+                },
+            })
+
+            local map = require("janno.utils").map
+            map("n", "<leader>rs", "<Cmd>IronRepl<CR>", {
+                desc = "Open a REPL for current filetype",
+            })
+            map("n", "<leader>rr", "<Cmd>IronRestart<CR>", {
+                desc = "Restart the current REPL",
+            })
+            map("n", "<leader>sf", "<Cmd>lua require('iron.core').send_file()<CR>", {
+                desc = "Sends the whole file to the repl",
+            })
+            map("n", "<leader>sl", "<Cmd>lua require('iron.core').send_line()<CR>", {
+                desc = "Sends line below the cursor to the repl",
+            })
+            map("v", "<leader>sv", "<Cmd>lua require('iron.core').visual_send()<CR>", {
+                desc = "Sends the visual selection to the repl",
+            })
+        end,
+    },
 }
