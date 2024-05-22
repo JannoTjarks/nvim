@@ -18,7 +18,7 @@ return {
                         case_mode = "smart_case",
                     },
                     terraform_doc = {
-                        url_open_command = "xdg-open",
+                        url_open_command = vim.fn.has("macunix") and "open" or "xdg-open",
                         latest_provider_symbol = "  ",
                         wincmd = "new",
                         wrap = "nowrap",
