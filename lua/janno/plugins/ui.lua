@@ -95,22 +95,11 @@ return {
         opts = {},
     },
     {
-        "nvim-tree/nvim-tree.lua",
-        config = function()
-            require("nvim-tree").setup()
-
-            local map = require("janno.utils").map
-            map("n", "<leader>t", "<cmd>NvimTreeToggle<cr>")
-        end,
-    },
-    {
         "kevinhwang91/nvim-hlslens",
         config = function()
             require("hlslens").setup()
 
             local map = require("janno.utils").map
-            map("n", "<leader>t", "<cmd>NvimTreeToggle<cr>")
-
             map(
                 "n",
                 "n",
