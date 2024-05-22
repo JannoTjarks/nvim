@@ -241,4 +241,5 @@ return {
             map("n", "<leader>t", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
         end
     },
+    { 'wakatime/vim-wakatime', lazy = false }
 }
