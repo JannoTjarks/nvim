@@ -232,4 +232,13 @@ return {
             })
         end,
     },
+    {
+        'stevearc/oil.nvim',
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("oil").setup()
+            local map = require("janno.utils").map
+            map("n", "<leader>t", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
+        end
+    },
 }
