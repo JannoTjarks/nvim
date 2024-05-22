@@ -16,6 +16,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
+            { 'AndreM222/copilot-lualine' },
             { "nvim-tree/nvim-web-devicons" },
             { "arkav/lualine-lsp-progress" },
         },
@@ -53,6 +54,7 @@ return {
                     "lsp_progress",
                 },
                 lualine_x = {
+                    "copilot",
                     "encoding",
                     "fileformat",
                     "filetype",
