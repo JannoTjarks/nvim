@@ -213,4 +213,12 @@ return {
         end,
     },
     { "wakatime/vim-wakatime", lazy = false },
+    {
+        "tris203/precognition.nvim",
+        config = function()
+            local map = require("janno.utils").map
+            map("n", "<space>p", function() require("precognition").toggle() end,
+                { desc = "Open parent directory" })
+        end,
+    }
 }
