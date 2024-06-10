@@ -109,6 +109,7 @@ return {
     },
     {
         "Vigemus/iron.nvim",
+        branch = "master",
         config = function()
             local iron = require("iron.core")
             iron.setup({
@@ -124,7 +125,7 @@ return {
                         ps1 = {
                             command = { "pwsh" },
                         },
-                        py = {
+                        python = {
                             command = { "python3" },
                         },
                         lua = {
@@ -156,31 +157,6 @@ return {
     {
         "christoomey/vim-tmux-navigator",
         config = function()
-            local iron = require("iron.core")
-            iron.setup({
-                config = {
-                    scratch_repl = true,
-                    repl_definition = {
-                        sh = {
-                            command = { "bash" },
-                        },
-                        bash = {
-                            command = { "bash" },
-                        },
-                        ps1 = {
-                            command = { "pwsh" },
-                        },
-                        py = {
-                            command = { "python3" },
-                        },
-                        lua = {
-                            command = { "luajit" },
-                        },
-                    },
-                    repl_open_cmd = "botright 20 split",
-                },
-            })
-
             local map = require("janno.utils").map
             map("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>", {
                 desc = "Navigate to the next pane left",
