@@ -108,11 +108,6 @@ return {
         end,
     },
     {
-        "numToStr/Comment.nvim",
-        lazy = false,
-        opts = {},
-    },
-    {
         "Vigemus/iron.nvim",
         config = function()
             local iron = require("iron.core")
