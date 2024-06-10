@@ -41,14 +41,18 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local augroup = require("janno.utils").augroup
-            vim.api.nvim_create_autocmd('LspAttach', {
+            vim.api.nvim_create_autocmd("LspAttach", {
                 group = augroup("-lsp-attach"),
                 callback = function(event)
                     local map = require("janno.utils").map
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
                     -- inlay-hints
-                    if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+                    if
+                        client
+                        and client.server_capabilities.inlayHintProvider
+                        and vim.lsp.inlay_hint
+                    then
                         map("n", "<space>th", function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
                         end, { desc = "Toggle Inlay Hints [LSP]" })
@@ -78,15 +82,9 @@ return {
                         "<Cmd>lua vim.lsp.buf.definition()<CR>",
                         { desc = "Jumps to the definition of the symbol under the cursor [LSP]" }
                     )
-                    map(
-                        "n",
-                        "gi",
-                        "<Cmd>lua vim.lsp.buf.implementation()<CR>",
-                        {
-                            desc =
-                            "Lists all the implementations for the symbol under the cursor [LSP]"
-                        }
-                    )
+                    map("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", {
+                        desc = "Lists all the implementations for the symbol under the cursor [LSP]",
+                    })
                     map("n", "<leader>k", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", {
                         desc =
                         "Displays signature information about the symbol under the cursor [LSP]",
@@ -104,12 +102,6 @@ return {
                     })
                     map(
                         "n",
-                        "<space>f",
-                        "<Cmd>lua vim.lsp.buf.formatting()<CR>",
-                        { desc = "Formats the current buffer [LSP]" }
-                    )
-                    map(
-                        "n",
                         "<space>rn",
                         "<Cmd>lua vim.lsp.buf.rename()<CR>",
                         { desc = "Rename old_fname to new_fname [LSP]" }
@@ -123,7 +115,7 @@ return {
 
                     -- formatting
                     if client.server_capabilities.documentFormattingProvider then
-                        vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+                        vim.api.nvim_create_autocmd({ "BufWritePre" }, {
                             buffer = event.buf,
                             group = augroup("formatting"),
                             callback = function()
@@ -135,34 +127,39 @@ return {
                     -- highlight
                     if client and client.server_capabilities.documentHighlightProvider then
                         local highlight_augroup = augroup("-lsp-highlight")
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                             buffer = event.buf,
                             group = highlight_augroup,
                             callback = vim.lsp.buf.document_highlight,
                         })
 
-                        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
                             buffer = event.buf,
                             group = highlight_augroup,
                             callback = vim.lsp.buf.clear_references,
                         })
 
-
                         local detach_augroup = augroup("-lsp-detach")
-                        vim.api.nvim_create_autocmd('LspDetach', {
-                            group = augroup(detach_augroup),
+                        vim.api.nvim_create_autocmd("LspDetach", {
+                            group = detach_augroup,
                             callback = function(event2)
                                 vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds { group = highlight_augroup, buffer = event2.buf }
+                                vim.api.nvim_clear_autocmds({
+                                    group = highlight_augroup,
+                                    buffer = event2.buf,
+                                })
                             end,
                         })
                     end
-                end
+                end,
             })
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend('force', capabilities,
-                require('cmp_nvim_lsp').default_capabilities())
+            capabilities = vim.tbl_deep_extend(
+                "force",
+                capabilities,
+                require("cmp_nvim_lsp").default_capabilities()
+            )
 
             local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
             for type, icon in pairs(signs) do
@@ -309,29 +306,21 @@ return {
                         validate = true,
                         completion = true,
                         schemas = {
-                            -- ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
-                            -- "/.azurepipelines/*",
-                            -- ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] =
-                            -- "*api*.{yml,yaml}",
-                            -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] =
-                            -- "roles/**.{yml,yaml}",
-                            -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] =
-                            -- "playbooks/**.{yml,yaml}",
-                            -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] =
-                            -- "*host*.{yml,yaml}",
-                            -- ["https://json.schemastore.org/github-workflow.json"] =
-                            -- ".github/workflows/*",
-                            -- ["https://json.schemastore.org/github-action.json"] =
-                            -- ".github/actions/*.{yml,yaml}",
-                            -- ["https://json.schemastore.org/dependabot-2.0.json"] =
-                            -- ".github/dependabot.{yml,yaml}",
-                            -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] =
-                            -- "*gitlab-ci*.{yml,yaml}",
-                            -- kubernetes = "@(deploy|.k8s)/**/*.{yml,yaml}",
-                            -- kubernetes = "deploy/**/*.{yml,yaml}",
-                            -- ["https://json.schemastore.org/kustomization.json"] =
-                            -- "kustomization.{yml,yaml}",
-                            -- ["https://json.schprd-infosyspaloaltomig-weu-rdemastore.org/chart.json"] = "Chart.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
+                            "/.azurepipelines/*",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] =
+                            "roles/**.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] =
+                            "playbooks/**.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] =
+                            "*host*.{yml,yaml}",
+                            ["https://json.schemastore.org/github-workflow.json"] =
+                            ".github/workflows/*",
+                            ["https://json.schemastore.org/github-action.json"] =
+                            ".github/actions/*.{yml,yaml}",
+                            kubernetes = "deploy/**/!(kustomization).{yml,yaml}",
+                            ["https://json.schemastore.org/kustomization.json"] =
+                            "kustomization.{yml,yaml}",
                         },
                     },
                 },
