@@ -292,6 +292,10 @@ return {
                 capabilities = capabilities,
             })
 
+            lsp.gdscript.setup({
+                capabilities = capabilities,
+            })
+
             lsp.yamlls.setup({
                 capabilities = capabilities,
                 filetypes = { "yaml", "yml", "yaml.docker-compsose" },
