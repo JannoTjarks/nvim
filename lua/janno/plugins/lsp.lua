@@ -24,13 +24,21 @@ return {
         },
     },
     {
-        "neovim/nvim-lspconfig",
+        "folke/lazydev.nvim",
+        ft = "lua",                                  -- only load on lua files
         dependencies = {
-            {
-                "folke/neodev.nvim",
-                opts = {},
+            { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+        },
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "luvit-meta/library", words = { "vim%.uv" } },
             },
         },
+    },
+    {
+        "neovim/nvim-lspconfig",
         config = function()
             local augroup = require("janno.utils").augroup
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -225,18 +233,23 @@ return {
                 capabilities = capabilities,
                 settings = {
                     Lua = {
-                        runtime = {
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
                         workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
                         },
                         telemetry = {
                             enable = false,
                         },
+                        codeLens = {
+                            enable = true,
+                        },
+                        hint = {
+                            enable = true,
+                            setType = false,
+                            paramType = true,
+                            paramName = "Disable",
+                            semicolon = "Disable",
+                            arrayIndex = "Disable",
+                        }
                     },
                 },
             })
