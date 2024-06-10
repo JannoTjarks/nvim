@@ -61,8 +61,7 @@ return {
                 { desc = "Lists Diagnostics for all open buffers or a specific buffer" }
             )
             map("n", "<leader>fd", builtin.lsp_definitions, {
-                desc =
-                "Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope",
+                desc = "Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope",
             })
             map("n", "<leader>fr", builtin.lsp_references, {
                 desc = "Lists LSP references for word under the cursor, jumps to reference on `<cr>`",
@@ -71,8 +70,7 @@ return {
                 desc = "Lists git status for current directory",
             })
             map("n", "<leader>fGb", builtin.git_branches, {
-                desc =
-                "List branches for current directory, with output from `git log --oneline` shown in the preview window",
+                desc = "List branches for current directory, with output from `git log --oneline` shown in the preview window",
             })
             map("n", "<leader>fGc", builtin.git_commits, {
                 desc = "Lists commits for current directory with diff preview",
@@ -217,8 +215,9 @@ return {
         "tris203/precognition.nvim",
         config = function()
             local map = require("janno.utils").map
-            map("n", "<space>p", function() require("precognition").toggle() end,
-                { desc = "Open parent directory" })
+            map("n", "<space>p", function()
+                require("precognition").toggle()
+            end, { desc = "Open parent directory" })
         end,
-    }
+    },
 }

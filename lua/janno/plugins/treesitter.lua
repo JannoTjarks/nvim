@@ -61,5 +61,5 @@ return {
                 },
             },
         })
-    end
+    end,
 }

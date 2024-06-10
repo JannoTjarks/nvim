@@ -25,7 +25,7 @@ return {
     },
     {
         "folke/lazydev.nvim",
-        ft = "lua",                                  -- only load on lua files
+        ft = "lua", -- only load on lua files
         dependencies = {
             { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
         },
@@ -86,19 +86,16 @@ return {
                         desc = "Lists all the implementations for the symbol under the cursor [LSP]",
                     })
                     map("n", "<leader>k", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", {
-                        desc =
-                        "Displays signature information about the symbol under the cursor [LSP]",
+                        desc = "Displays signature information about the symbol under the cursor [LSP]",
                     })
                     map("n", "<space>D", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", {
-                        desc =
-                        "Jumps to the definition of the type of the symbol under the cursor [LSP]",
+                        desc = "Jumps to the definition of the type of the symbol under the cursor [LSP]",
                     })
                     map("n", "<space>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", {
                         desc = "Selects a code action available at the current cursor position [LSP]",
                     })
                     map("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", {
-                        desc =
-                        "Lists all the references to the symbol under the cursor in the quickfix window [LSP]",
+                        desc = "Lists all the references to the symbol under the cursor in the quickfix window [LSP]",
                     })
                     map(
                         "n",
@@ -246,7 +243,7 @@ return {
                             paramName = "Disable",
                             semicolon = "Disable",
                             arrayIndex = "Disable",
-                        }
+                        },
                     },
                 },
             })
@@ -310,21 +307,14 @@ return {
                         validate = true,
                         completion = true,
                         schemas = {
-                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
-                            "/.azurepipelines/*",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] =
-                            "roles/**.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] =
-                            "playbooks/**.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] =
-                            "*host*.{yml,yaml}",
-                            ["https://json.schemastore.org/github-workflow.json"] =
-                            ".github/workflows/*",
-                            ["https://json.schemastore.org/github-action.json"] =
-                            ".github/actions/*.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "/.azurepipelines/*",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] = "roles/**.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] = "playbooks/**.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] = "*host*.{yml,yaml}",
+                            ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+                            ["https://json.schemastore.org/github-action.json"] = ".github/actions/*.{yml,yaml}",
                             kubernetes = "deploy/**/!(kustomization).{yml,yaml}",
-                            ["https://json.schemastore.org/kustomization.json"] =
-                            "kustomization.{yml,yaml}",
+                            ["https://json.schemastore.org/kustomization.json"] = "kustomization.{yml,yaml}",
                         },
                     },
                 },
