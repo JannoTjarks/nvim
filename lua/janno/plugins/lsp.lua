@@ -260,7 +260,7 @@ return {
 
             lsp.powershell_es.setup({
                 bundle_path = require("janno.utils").masonpath
-                    .. "/packages/powershell-editor-services",
+                    .. "/packages/powershell-editor-services/",
                 capabilities = capabilities,
             })
 
