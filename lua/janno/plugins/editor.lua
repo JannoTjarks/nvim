@@ -177,7 +177,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        branch = "dev",
+        branch = "main",
         config = function()
             local trouble = require("trouble")
             trouble.setup()
