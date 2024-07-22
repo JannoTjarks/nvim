@@ -234,7 +234,19 @@ return {
         config = function()
             require("oil").setup()
             local map = require("janno.utils").map
-            map("n", "<leader>t", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
+            map("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
+        end,
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        config = function()
+            require("nvim-tree").setup()
+            vim.g.loaded_netrw = 1
+            vim.g.loaded_netrwPlugin = 1
+            local map = require("janno.utils").map
+            map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>", { desc = "Open parent directory" })
         end,
     },
     { "wakatime/vim-wakatime", lazy = false },
