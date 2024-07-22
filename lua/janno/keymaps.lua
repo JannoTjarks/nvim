@@ -18,6 +18,7 @@ map("v", "<A-j>", ":m '>+1<CR>gv")
 map("n", "<A-.>", "<cmd>bnext<CR>")
 map("n", "<A-,>", "<cmd>bprevious<CR>")
 map("n", "<A-c>", "<cmd>bdelete<CR>")
+map("n", "<A-C>", "<cmd>bdelete!<CR>")
 
 -- Clear highlight search after pressing ESC in normal mode
 map("n", "<ESC>", "<cmd>nohlsearch<CR>")
