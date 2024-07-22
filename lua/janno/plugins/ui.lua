@@ -2,7 +2,6 @@ return {
     {
         "akinsho/bufferline.nvim",
         version = "4.6.0",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("bufferline").setup({
                 options = {
@@ -17,7 +16,6 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = {
             { "AndreM222/copilot-lualine" },
-            { "nvim-tree/nvim-web-devicons" },
             { "arkav/lualine-lsp-progress" },
         },
         opts = {
@@ -147,7 +145,17 @@ return {
             })
         end,
     },
+    { "stevearc/dressing.nvim", },
     {
-        "stevearc/dressing.nvim",
+        "echasnovski/mini.icons",
+        opts = {},
+        init = function()
+            package.preload["nvim-web-devicons"] = function()
+                -- needed since it will be false when loading and mini will fail
+                package.loaded["nvim-web-devicons"] = {}
+                require("mini.icons").mock_nvim_web_devicons()
+                return package.loaded["nvim-web-devicons"]
+            end
+        end,
     },
 }
