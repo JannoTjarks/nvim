@@ -145,7 +145,7 @@ return {
             })
         end,
     },
-    { "stevearc/dressing.nvim", },
+    { "stevearc/dressing.nvim" },
     {
         "echasnovski/mini.icons",
         opts = {},

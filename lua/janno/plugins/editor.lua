@@ -45,7 +45,7 @@ return {
                             "--glob=!**/package-lock.json",
                         },
                     },
-                }
+                },
             })
 
             require("telescope").load_extension("fzf")
@@ -77,7 +77,8 @@ return {
             )
             map(
                 "n",
-                "<leader>fq", builtin.quickfix,
+                "<leader>fq",
+                builtin.quickfix,
                 { desc = "Lists items in the quickfix list, jumps to location on <cr>" }
             )
             map("n", "<leader>fh", builtin.help_tags, { desc = "Lists available help tags" })
@@ -262,19 +263,17 @@ return {
         "hedyhli/outline.nvim",
         config = function()
             -- Example mapping to toggle outline
-            vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
-                { desc = "Toggle Outline" })
+            vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 
-            require("outline").setup {
+            require("outline").setup({
                 -- Your setup opts here (leave empty to use defaults)
-            }
+            })
         end,
     },
     {
-        'MagicDuck/grug-far.nvim',
+        "MagicDuck/grug-far.nvim",
         config = function()
-            require('grug-far').setup({});
-        end
+            require("grug-far").setup({})
+        end,
     },
-
 }
