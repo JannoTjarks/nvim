@@ -75,6 +75,11 @@ return {
                 builtin.buffers,
                 { desc = "Lists open buffers in current neovim instance" }
             )
+            map(
+                "n",
+                "<leader>fq", builtin.quickfix,
+                { desc = "Lists items in the quickfix list, jumps to location on <cr>" }
+            )
             map("n", "<leader>fh", builtin.help_tags, { desc = "Lists available help tags" })
             map(
                 "n",
