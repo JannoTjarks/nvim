@@ -11,6 +11,7 @@ return {
             integrations = {
                 cmp = true,
                 gitsigns = true,
+                grug_far = true,
                 indent_blankline = {
                     enabled = true,
                     colored_indent_levels = false,
