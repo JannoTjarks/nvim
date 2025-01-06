@@ -6,7 +6,7 @@ return {
             { "nvim-lua/plenary.nvim" },
             { "BurntSushi/ripgrep" },
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-            { "JannoTjarks/telescope-terraform-doc.nvim" },
+            { "ANGkeith/telescope-terraform-doc.nvim" },
         },
         config = function()
             require("telescope").setup({
