@@ -18,7 +18,7 @@ return {
                 "pyright",
                 "terraformls",
                 "tflint",
-                "tsserver",
+                "ts_ls",
                 "yamlls",
             },
         },
@@ -285,7 +285,7 @@ return {
                 capabilities = capabilities,
             })
 
-            lsp.tsserver.setup({
+            lsp.ts_ls.setup({
                 capabilities = capabilities,
             })
 
