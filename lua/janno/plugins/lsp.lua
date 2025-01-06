@@ -333,10 +333,11 @@ return {
     },
     {
         "JannoTjarks/tflint.nvim",
+        version = "*",
         dependencies = {
-            "williamboman/mason.nvim",
-            "neovim/nvim-lspconfig",
+            "neovim/nvim-lspconfig"
         },
-        opts = {},
-    },
+        lazy = true,
+        ft = "terraform",
+    }
 }
