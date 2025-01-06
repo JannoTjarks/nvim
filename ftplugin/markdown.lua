@@ -17,3 +17,4 @@ map("n", "<leader>O", function()
 
     print("canceled")
 end)
+vim.o.conceallevel = 2
