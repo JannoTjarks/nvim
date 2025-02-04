@@ -269,6 +269,7 @@ return {
             })
 
             lsp.terraformls.setup({
+                cmd = { 'opentofu-ls', 'serve' },
                 -- capabilities = vim.tbl_deep_extend("keep", {
                 --     experimental = {
                 --         showReferencesCommandId = "client.showReferences",
