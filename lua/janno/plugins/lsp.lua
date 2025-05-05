@@ -82,30 +82,10 @@ return {
                         "<Cmd>lua vim.lsp.buf.definition()<CR>",
                         { desc = "Jumps to the definition of the symbol under the cursor [LSP]" }
                     )
-                    map("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", {
-                        desc = "Lists all the implementations for the symbol under the cursor [LSP]",
-                    })
-                    map("n", "<leader>k", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", {
-                        desc =
-                        "Displays signature information about the symbol under the cursor [LSP]",
-                    })
                     map("n", "<space>D", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", {
                         desc =
                         "Jumps to the definition of the type of the symbol under the cursor [LSP]",
                     })
-                    map("n", "<space>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", {
-                        desc = "Selects a code action available at the current cursor position [LSP]",
-                    })
-                    map("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", {
-                        desc =
-                        "Lists all the references to the symbol under the cursor in the quickfix window [LSP]",
-                    })
-                    map(
-                        "n",
-                        "<space>rn",
-                        "<Cmd>lua vim.lsp.buf.rename()<CR>",
-                        { desc = "Rename old_fname to new_fname [LSP]" }
-                    )
                     map(
                         "n",
                         "<leader>l",
