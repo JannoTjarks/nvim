@@ -60,12 +60,6 @@ return {
 
                     map(
                         "n",
-                        "<space>e",
-                        "<Cmd>lua vim.diagnostic.open_float()<CR>",
-                        { desc = "Show diagnostics in a floating window" }
-                    )
-                    map(
-                        "n",
                         "<space>q",
                         "<Cmd>lua vim.diagnostic.setloclist()<CR>",
                         { desc = "Add buffer diagnostics to the location list" }
@@ -141,18 +135,7 @@ return {
                 require("cmp_nvim_lsp").default_capabilities()
             )
 
-            local lsp = require("lspconfig")
-
-            lsp.bashls.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.eslint.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.gopls.setup({
-                capabilities = capabilities,
+            vim.lsp.config('gopls', {
                 settings = {
                     gopls = {
                         codelenses = {
@@ -175,7 +158,6 @@ return {
                             rangeVariableTypes = true,
                         },
                         analyses = {
-                            fieldalignment = true,
                             nilness = true,
                             unusedparams = true,
                             unusedwrite = true,
@@ -193,87 +175,10 @@ return {
                         },
                         semanticTokens = true,
                     },
-                },
+                }
             })
 
-            lsp.jsonls.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.lua_ls.setup({
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        workspace = {
-                            checkThirdParty = false,
-                        },
-                        telemetry = {
-                            enable = false,
-                        },
-                        codeLens = {
-                            enable = true,
-                        },
-                        hint = {
-                            enable = true,
-                            setType = false,
-                            paramType = true,
-                            paramName = "Disable",
-                            semicolon = "Disable",
-                            arrayIndex = "Disable",
-                        },
-                    },
-                },
-            })
-
-            lsp.omnisharp.setup({
-                cmd = {
-                    require("janno.utils").masonpath .. "/bin/omnisharp",
-                },
-                capabilities = capabilities,
-            })
-
-            lsp.powershell_es.setup({
-                bundle_path = require("janno.utils").masonpath
-                    .. "/packages/powershell-editor-services",
-                capabilities = capabilities,
-            })
-
-            lsp.pyright.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.terraformls.setup({
-                cmd = { 'opentofu-ls', 'serve' },
-                -- capabilities = vim.tbl_deep_extend("keep", {
-                --     experimental = {
-                --         showReferencesCommandId = "client.showReferences",
-                --     },
-                -- }, require("cmp_nvim_lsp").default_capabilities()),
-                capabilities = capabilities,
-                init_options = {
-                    experimentalFeatures = {
-                        validateOnSave = true,
-                        prefillRequiredFields = true,
-                    },
-                },
-                filetypes = { "terraform", "terraform-vars" },
-            })
-
-            lsp.tflint.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.ts_ls.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.gdscript.setup({
-                capabilities = capabilities,
-            })
-
-            lsp.yamlls.setup({
-                capabilities = capabilities,
-                filetypes = { "yaml", "yml", "yaml.docker-compsose" },
+            vim.lsp.config('yamlls', {
                 settings = {
                     yaml = {
                         format = {
@@ -287,23 +192,63 @@ return {
                         schemas = {
                             ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
                             "/.azurepipelines/*",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] =
-                            "roles/**.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] =
-                            "playbooks/**.{yml,yaml}",
-                            ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/hosts"] =
-                            "*host*.{yml,yaml}",
                             ["https://json.schemastore.org/github-workflow.json"] =
                             ".github/workflows/*",
                             ["https://json.schemastore.org/github-action.json"] =
                             ".github/actions/*.{yml,yaml}",
-                            kubernetes = "deploy/**/!(kustomization).{yml,yaml}",
                             ["https://json.schemastore.org/kustomization.json"] =
                             "kustomization.{yml,yaml}",
                         },
                     },
-                },
+                }
             })
+
+            vim.lsp.config('lua_ls', {
+                on_init = function(client)
+                    if client.workspace_folders then
+                        local path = client.workspace_folders[1].name
+                        if
+                            path ~= vim.fn.stdpath('config')
+                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                        then
+                            return
+                        end
+                    end
+
+                    client.config.settings.Lua = vim.tbl_deep_extend('force',
+                        client.config.settings.Lua, {
+                            runtime = {
+                                version = 'LuaJIT',
+                                path = {
+                                    'lua/?.lua',
+                                    'lua/?/init.lua',
+                                },
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME
+                                }
+                            }
+                        })
+                end,
+                settings = {
+                    Lua = {}
+                }
+            })
+
+            vim.lsp.enable('bashls')
+            vim.lsp.enable('csharp_ls')
+            vim.lsp.enable('eslint')
+            vim.lsp.enable('gdscript')
+            vim.lsp.enable('gopls')
+            vim.lsp.enable('jsonls')
+            vim.lsp.enable('lua_ls')
+            vim.lsp.enable('powershell_es')
+            vim.lsp.enable('pyrigth')
+            vim.lsp.enable('terraformls')
+            vim.lsp.enable('ts_ls')
+            vim.lsp.enable('yamlls')
         end,
     },
     {
