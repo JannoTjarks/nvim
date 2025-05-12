@@ -17,6 +17,7 @@ vim.opt.number = true
 vim.opt.autoread = true
 vim.opt.fileformat = "unix"
 vim.opt.clipboard:prepend("unnamed")
+vim.opt.conceallevel = 0
 
 -- Search
 vim.opt.incsearch = true
