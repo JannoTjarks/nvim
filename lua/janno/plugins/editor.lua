@@ -241,6 +241,9 @@ return {
                     path = "~/Documents/vaults/janno-enercon-notes",
                 },
             },
+            ui = {
+                enable = false,
+            }
         },
     },
     {
