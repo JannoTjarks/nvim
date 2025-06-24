@@ -222,10 +222,10 @@ return {
         version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
         event = {
-            "BufReadPre /home/janno/Documents/vaults/janno-personal-notes",
-            "BufNewFile /home/janno/Documents/vaults/janno-personal-notes",
-            "BufReadPre /home/janno/Documents/vaults/janno-enercon-notes",
-            "BufNewFile /home/janno/Documents/vaults/janno-enercon-notes",
+            "BufReadPre /home/janno/Documents/vaults/janno-personal-notes/*.md",
+            "BufNewFile /home/janno/Documents/vaults/janno-personal-notes/*.md",
+            "BufReadPre /home/janno/Documents/vaults/janno-enercon-notes/*.md",
+            "BufNewFile /home/janno/Documents/vaults/janno-enercon-notes/*.md",
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
