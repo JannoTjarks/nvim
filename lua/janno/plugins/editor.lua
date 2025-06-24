@@ -218,18 +218,27 @@ return {
         end,
     },
     {
-        "epwalsh/obsidian.nvim",
+        "obsidian-nvim/obsidian.nvim",
         version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
-        ft = "markdown",
+        event = {
+            "BufReadPre /home/janno/Documents/vaults/janno-personal-notes",
+            "BufNewFile /home/janno/Documents/vaults/janno-personal-notes",
+            "BufReadPre /home/janno/Documents/vaults/janno-enercon-notes",
+            "BufNewFile /home/janno/Documents/vaults/janno-enercon-notes",
+        },
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
         opts = {
             workspaces = {
                 {
-                    name = "jannos notes",
-                    path = "~/Documents/notes/obsidian/Jannos Notes/",
+                    name = "personal",
+                    path = "~/Documents/vaults/janno-personal-notes",
+                },
+                {
+                    name = "enercon",
+                    path = "~/Documents/vaults/janno-enercon-notes",
                 },
             },
         },
