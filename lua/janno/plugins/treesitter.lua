@@ -17,6 +17,7 @@ return {
             "cmake",
             "cpp",
             "css",
+            "diff",
             "dockerfile",
             "gitignore",
             "go",
