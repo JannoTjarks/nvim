@@ -1,2 +1,9 @@
 ENERCON
 UUID
+openssh
+WinRM
+WMI
+RDP
+VNets
+NIC
+IaC
