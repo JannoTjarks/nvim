@@ -227,9 +227,6 @@ return {
             "BufReadPre /home/janno/Documents/vaults/janno-enercon-notes/*.md",
             "BufNewFile /home/janno/Documents/vaults/janno-enercon-notes/*.md",
         },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
         opts = {
             workspaces = {
                 {
