@@ -243,7 +243,16 @@ return {
             },
             ui = {
                 enable = false,
-            }
+            },
+            templates = {
+                folder = "99 - Templates/",
+            },
+            daily_notes = {
+                folder = "01 - Daily Notes/",
+                default_tags = { "daily-notes" },
+                template = "daily-notes-template.md",
+                workdays_only = true,
+            },
         },
     },
     {
