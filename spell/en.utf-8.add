@@ -7,3 +7,5 @@ RDP
 VNets
 NIC
 IaC
+azurerm
+lsp
