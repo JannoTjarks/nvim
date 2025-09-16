@@ -13,7 +13,7 @@ return {
                 "gopls",
                 "jsonls",
                 "lua_ls",
-                "omnisharp",
+                "csharp_ls",
                 "powershell_es",
                 "pyright",
                 "tofu_ls",
