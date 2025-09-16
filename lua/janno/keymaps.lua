@@ -25,3 +25,7 @@ map("n", "<ESC>", "<cmd>nohlsearch<CR>")
 
 -- Easier mode change with pressing ESC from inside terminal mode to normal mode
 map("t", "<ESC>", "<C-\\><C-n>")
+
+-- Enable spellcheck with a keymap
+map("n", "<leader>ss", "<cmd>set spell spelllang=en<CR>")
+map("n", "<leader>sg", "<cmd>set spell spelllang=de<CR>")
