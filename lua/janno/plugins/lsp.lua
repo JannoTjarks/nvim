@@ -16,7 +16,7 @@ return {
                 "omnisharp",
                 "powershell_es",
                 "pyright",
-                "terraformls",
+                "tofu_ls",
                 "tflint",
                 "ts_ls",
                 "yamlls",
@@ -235,6 +235,12 @@ return {
                 settings = {
                     Lua = {}
                 }
+            }
+            )
+            vim.lsp.config('tofu_ls', {
+                cmd = { 'tofu-ls', 'serve' },
+              filetypes = { 'terraform', 'terraform-vars' },
+              root_markers = { '.terraform', '.git' },
             })
 
             vim.lsp.enable('bashls')
@@ -246,7 +252,7 @@ return {
             vim.lsp.enable('lua_ls')
             vim.lsp.enable('powershell_es')
             vim.lsp.enable('pyrigth')
-            vim.lsp.enable('terraformls')
+            vim.lsp.enable('tofu_ls')
             vim.lsp.enable('ts_ls')
             vim.lsp.enable('yamlls')
         end,
