@@ -145,5 +145,5 @@ return {
             end
         end,
     },
-    { "shortcuts/no-neck-pain.nvim", version = "*" }
+    { "shortcuts/no-neck-pain.nvim", version = "*" },
 }

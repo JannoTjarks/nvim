@@ -67,8 +67,7 @@ return {
                 { desc = "Lists Diagnostics for all open buffers or a specific buffer" }
             )
             map("n", "<leader>fd", builtin.lsp_definitions, {
-                desc =
-                "Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope",
+                desc = "Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope",
             })
             map("n", "<leader>fr", builtin.lsp_references, {
                 desc = "Lists LSP references for word under the cursor, jumps to reference on `<cr>`",
@@ -77,8 +76,7 @@ return {
                 desc = "Lists git status for current directory",
             })
             map("n", "<leader>fGb", builtin.git_branches, {
-                desc =
-                "List branches for current directory, with output from `git log --oneline` shown in the preview window",
+                desc = "List branches for current directory, with output from `git log --oneline` shown in the preview window",
             })
             map("n", "<leader>fGc", builtin.git_commits, {
                 desc = "Lists commits for current directory with diff preview",
@@ -261,19 +259,37 @@ return {
 
             harpoon:setup()
 
-            vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-            vim.keymap.set("n", "<leader>c", function() harpoon:list():clear() end)
-            vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+            vim.keymap.set("n", "<leader>a", function()
+                harpoon:list():add()
+            end)
+            vim.keymap.set("n", "<leader>c", function()
+                harpoon:list():clear()
+            end)
+            vim.keymap.set("n", "<C-e>", function()
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+            end)
 
-            vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-            vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-            vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-            vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+            vim.keymap.set("n", "<leader>1", function()
+                harpoon:list():select(1)
+            end)
+            vim.keymap.set("n", "<leader>2", function()
+                harpoon:list():select(2)
+            end)
+            vim.keymap.set("n", "<leader>3", function()
+                harpoon:list():select(3)
+            end)
+            vim.keymap.set("n", "<leader>4", function()
+                harpoon:list():select(4)
+            end)
 
             -- Toggle previous & next buffers stored within Harpoon list
-            vim.keymap.set("n", "<leader>.", function() harpoon:list():next() end)
-            vim.keymap.set("n", "<leader>,", function() harpoon:list():prev() end)
-        end
+            vim.keymap.set("n", "<leader>.", function()
+                harpoon:list():next()
+            end)
+            vim.keymap.set("n", "<leader>,", function()
+                harpoon:list():prev()
+            end)
+        end,
     },
     {
         "folke/zen-mode.nvim",
@@ -281,6 +297,6 @@ return {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
-        }
-    }
+        },
+    },
 }

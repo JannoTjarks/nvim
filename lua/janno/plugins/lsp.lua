@@ -25,7 +25,7 @@ return {
     },
     {
         "folke/lazydev.nvim",
-        ft = "lua",                                  -- only load on lua files
+        ft = "lua", -- only load on lua files
         dependencies = {
             { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
         },
@@ -77,8 +77,7 @@ return {
                         { desc = "Jumps to the definition of the symbol under the cursor [LSP]" }
                     )
                     map("n", "<space>D", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", {
-                        desc =
-                        "Jumps to the definition of the type of the symbol under the cursor [LSP]",
+                        desc = "Jumps to the definition of the type of the symbol under the cursor [LSP]",
                     })
                     map(
                         "n",
@@ -135,7 +134,7 @@ return {
                 require("cmp_nvim_lsp").default_capabilities()
             )
 
-            vim.lsp.config('gopls', {
+            vim.lsp.config("gopls", {
                 settings = {
                     gopls = {
                         codelenses = {
@@ -175,10 +174,10 @@ return {
                         },
                         semanticTokens = true,
                     },
-                }
+                },
             })
 
-            vim.lsp.config('yamlls', {
+            vim.lsp.config("yamlls", {
                 settings = {
                     yaml = {
                         format = {
@@ -190,80 +189,78 @@ return {
                         validate = true,
                         completion = true,
                         schemas = {
-                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
-                            "/.azurepipelines/*",
-                            ["https://json.schemastore.org/github-workflow.json"] =
-                            ".github/workflows/*",
-                            ["https://json.schemastore.org/github-action.json"] =
-                            ".github/actions/*.{yml,yaml}",
-                            ["https://json.schemastore.org/kustomization.json"] =
-                            "kustomization.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "/.azurepipelines/*",
+                            ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+                            ["https://json.schemastore.org/github-action.json"] = ".github/actions/*.{yml,yaml}",
+                            ["https://json.schemastore.org/kustomization.json"] = "kustomization.{yml,yaml}",
                         },
                     },
-                }
+                },
             })
 
-            vim.lsp.config('lua_ls', {
+            vim.lsp.config("lua_ls", {
                 on_init = function(client)
                     if client.workspace_folders then
                         local path = client.workspace_folders[1].name
                         if
-                            path ~= vim.fn.stdpath('config')
-                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                            path ~= vim.fn.stdpath("config")
+                            and (
+                                vim.uv.fs_stat(path .. "/.luarc.json")
+                                or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+                            )
                         then
                             return
                         end
                     end
 
-                    client.config.settings.Lua = vim.tbl_deep_extend('force',
-                        client.config.settings.Lua, {
+                    client.config.settings.Lua =
+                        vim.tbl_deep_extend("force", client.config.settings.Lua, {
                             runtime = {
-                                version = 'LuaJIT',
+                                version = "LuaJIT",
                                 path = {
-                                    'lua/?.lua',
-                                    'lua/?/init.lua',
+                                    "lua/?.lua",
+                                    "lua/?/init.lua",
                                 },
                             },
                             workspace = {
                                 checkThirdParty = false,
                                 library = {
-                                    vim.env.VIMRUNTIME
-                                }
-                            }
+                                    vim.env.VIMRUNTIME,
+                                },
+                            },
                         })
                 end,
                 settings = {
-                    Lua = {}
-                }
-            }
-            )
-            vim.lsp.config('tofu_ls', {
-                cmd = { 'tofu-ls', 'serve' },
-              filetypes = { 'terraform', 'terraform-vars' },
-              root_markers = { '.terraform', '.git' },
+                    Lua = {},
+                },
+            })
+            vim.lsp.config("tofu_ls", {
+                cmd = { "tofu-ls", "serve" },
+                filetypes = { "terraform", "terraform-vars" },
+                root_markers = { ".terraform", ".git" },
             })
 
-            vim.lsp.enable('bashls')
-            vim.lsp.enable('csharp_ls')
-            vim.lsp.enable('eslint')
-            vim.lsp.enable('gdscript')
-            vim.lsp.enable('gopls')
-            vim.lsp.enable('jsonls')
-            vim.lsp.enable('lua_ls')
-            vim.lsp.enable('powershell_es')
-            vim.lsp.enable('pyrigth')
-            vim.lsp.enable('tofu_ls')
-            vim.lsp.enable('ts_ls')
-            vim.lsp.enable('yamlls')
+            vim.lsp.enable("bashls")
+            vim.lsp.enable("csharp_ls")
+            vim.lsp.enable("eslint")
+            vim.lsp.enable("gdscript")
+            vim.lsp.enable("gopls")
+            vim.lsp.enable("jsonls")
+            vim.lsp.enable("lua_ls")
+            vim.lsp.enable("powershell_es")
+            vim.lsp.enable("pyrigth")
+            vim.lsp.enable("tofu_ls")
+            vim.lsp.enable("ts_ls")
+            vim.lsp.enable("yamlls")
         end,
     },
     {
         "JannoTjarks/tflint.nvim",
         version = "*",
         dependencies = {
-            "neovim/nvim-lspconfig"
+            "neovim/nvim-lspconfig",
         },
         lazy = true,
         ft = "terraform",
-    }
+    },
 }
